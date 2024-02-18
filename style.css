@@ -225,9 +225,7 @@ body {
 
   .footer {
     margin-bottom: var(--default-gap);
-    p {
-      
-    }
+
     a {
       color: white;
       font-size: 0.8em;

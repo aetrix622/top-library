@@ -30,3 +30,16 @@ btnCancelNewBook.addEventListener("click", e => {
     btnAdd.classList.remove("addmode");
     addBox.classList.remove("addmode");
 });
+
+const Book = function(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+};
+
+var books = [];
+// load some default books
+books.push(new Book("The Adventures of Tom Sawyer", "Samuel Clemens", 432, true));
+books.push(new Book("The Hobbit", "J.R.R. Tolkien", 1024, false));
+books.push(new Book("The Road", "Cormack McCarthy", 837, true));

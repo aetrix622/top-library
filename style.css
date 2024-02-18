@@ -168,7 +168,7 @@ body {
         border-radius: 10px;
 
         display: grid;
-        grid-template-columns: 150px 100px 1fr;
+        grid-template-columns: 120px 100px 1fr;
         grid-template-rows: repeat(4, 1fr);
 
         div {
@@ -177,6 +177,15 @@ body {
 
         .cover {
           grid-row: 1 / -1;
+          background-color: #444;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img.default {
+            filter: invert();
+            height: 50px;
+          }
         }
 
         .readstatus {

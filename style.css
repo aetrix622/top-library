@@ -84,8 +84,22 @@ body {
     color: white;
   }
 
+  .invert {
+    filter: invert();
+  }
+
   .header {
     margin-top: var(--default-gap);
+    display: flex;
+    align-items: center;
+
+    .icon > img {
+      height: 70px;
+    }
+
+    div.pagetitle {
+      flex: 1;
+    }
   }
 
   .content {

@@ -4,7 +4,6 @@
   --default-gap: 50px;  
   
   font-family: "Libre Baskerville", serif;
-  font-weight: 400;
   font-style: normal;
 
   background-image: url(./res/books.jpg);
@@ -111,6 +110,25 @@ body {
       padding: 10px;
       border-radius: 5px;
       border-top-left-radius: 0; 
+
+      form {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+
+        label {
+          font-size: 1.3em;
+          text-align: right;
+        }
+
+        .radio {
+          grid-column: 2 / 3;
+
+          #newnotread {
+            margin-left: 50px;
+          }
+        }
+      }
     }
   
     .list {
@@ -126,6 +144,7 @@ body {
         background-color: white;
         color: black;
         padding: 10px;
+        border-radius: 10px;
 
         display: grid;
         grid-template-columns: 150px 100px 1fr;

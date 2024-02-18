@@ -23,13 +23,13 @@
             <div class="add">
                 <form action="index.html" method="post">
                     <label for="newtitle">Title</label>
-                    <input type="text" name="title" id="newtitle">
+                    <input type="text" name="title" id="newtitle" required>
 
                     <label for="newauthor">Author</label>
-                    <input type="text" name="author" id="newauthor">
+                    <input type="text" name="author" id="newauthor" required>
 
                     <label for="newpages">Pages</label>
-                    <input type="number" name="pages" id="newpages">
+                    <input type="number" name="pages" id="newpages" required>
 
                     <div class="radio">
                         <input type="radio" name="read" id="newread">
@@ -38,7 +38,10 @@
                         <input type="radio" name="read" id="newnotread">
                         <label for="newnotread">Not Read</label>
                     </div>    
-
+                    <div class="buttons">
+                        <button id="addbutton">Add Book</button>
+                        <button id="cancelbutton">Cancel</button>
+                    </div>
                 </form>
             </div>
             <div class="list">

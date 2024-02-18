@@ -162,6 +162,19 @@ body {
             margin-left: 50px;
           }
         }
+
+        .buttons {
+          display: flex;
+          gap: 20px;
+          grid-column: 2 / 3;
+        }
+
+        button {
+          border: 0;
+          background-color: goldenrod;
+          height: 30px;
+          width: 150px;
+        }
       }
     }
   

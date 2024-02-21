@@ -36,6 +36,20 @@ const Book = function(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.coverArt = "res/book-open-variant-outline.svg";
+    this.coverArtAlt = "default cover"
+};
+
+Book.prototype.generateCardHTML = function() {
+    let htmlBlock = `
+        <div class="card">
+            <div class="cover"><img src="${this.coverArt} alt="${this.coverArtAlt}" class="default"></div>
+            <div>Title</div><div>${this.title}</div>
+            <div>Author</div><div>${this.author}</div>
+            <div>Pages</div><div>${this.pages}</div>
+            <div class="readstatus">${this.read ? "Read" : "Not Read"}</div>
+        </div>
+    `;
 };
 
 var books = [];
@@ -43,3 +57,4 @@ var books = [];
 books.push(new Book("The Adventures of Tom Sawyer", "Samuel Clemens", 432, true));
 books.push(new Book("The Hobbit", "J.R.R. Tolkien", 1024, false));
 books.push(new Book("The Road", "Cormack McCarthy", 837, true));
+

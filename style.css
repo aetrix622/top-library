@@ -188,6 +188,12 @@ body {
 
       margin-top: 20px;
 
+      > p {
+        grid-column: 1 / -1;
+        margin: auto;
+        font-size: 1.5em;
+      }
+
       .card {
         background-color: white;
         color: black;

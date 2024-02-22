@@ -50,9 +50,9 @@ const Book = function(title, author, pages, read) {
     this.coverArtAlt = "default cover"
 };
 
-Book.prototype.generateCardHTML = function() {
+Book.prototype.generateCardHTML = function(divIndex) {
     let cardDiv = document.createElement("div");
-    cardDiv.classList.add("card");
+    cardDiv.classList.add("card", divIndex);
     cardDiv.innerHTML = `
             <div class="cover"><img src="${this.coverArt}" alt="${this.coverArtAlt}" class="default"></div>
             <div>Title</div><div>${this.title}</div>
@@ -80,8 +80,10 @@ function generateBookList() {
         errorMessage.textContent = "Your Library is empty. Please add a book.";
         bookListDiv.appendChild(errorMessage);
     } else {
+        let index = 0;
         for (let book of books) {
-            bookListDiv.appendChild(book.generateCardHTML());
+            let divIndex = `book${index++}`; // number increments AFTER addition
+            bookListDiv.appendChild(book.generateCardHTML(divIndex));
         }
     }
 }

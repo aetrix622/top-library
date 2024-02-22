@@ -50,6 +50,7 @@ Book.prototype.generateCardHTML = function() {
             <div class="readstatus">${this.read ? "Read" : "Not Read"}</div>
         </div>
     `;
+    return htmlBlock;
 };
 
 var books = [];

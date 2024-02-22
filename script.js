@@ -59,6 +59,10 @@ Book.prototype.generateCardHTML = function(divIndex) {
             <div>Author</div><div>${this.author}</div>
             <div>Pages</div><div>${this.pages}</div>
             <div class="readstatus">${this.read ? "Read" : "Not Read"}</div>
+            <div class="buttons">
+                <button class="toggleread">Toggle Read</button>
+                <button class="delete">Delete</button>
+            </div>
     `;
     return cardDiv;
 };

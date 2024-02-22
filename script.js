@@ -75,8 +75,13 @@ document.addEventListener("DOMContentLoaded", e => {
 
 function generateBookList() {
     bookListDiv.innerHTML = "";
-    for (let book of books) {
-        bookListDiv.appendChild(book.generateCardHTML());
+    if (books.length === 0) {
+        let errorMessage = document.createElement("p");
+        errorMessage.textContent = "Your Library is empty. Please add a book.";
+    } else {
+        for (let book of books) {
+            bookListDiv.appendChild(book.generateCardHTML());
+        }
     }
 }
 

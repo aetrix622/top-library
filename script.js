@@ -27,11 +27,16 @@ btnSubmitNewBook.addEventListener("click", e => {
     let book = new Book(title, author, pages, read);
     books.push(book); 
     generateBookList();
+    resetAddDialog();
 });
 
 btnCancelNewBook.addEventListener("click", e => {
     e.preventDefault();
     // clear all form fields then hide the form
+    resetAddDialog();
+});
+
+const resetAddDialog = function() {
     txtNewTitle.value = "";
     txtNewAuthor.value = "";
     txtNewPages.value = "";
@@ -39,7 +44,7 @@ btnCancelNewBook.addEventListener("click", e => {
     rdoNewNotRead.checked = true;
     btnAdd.classList.remove("addmode");
     addBox.classList.remove("addmode");
-});
+}
 
 const Book = function(title, author, pages, read) {
     this.title = title;

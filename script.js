@@ -78,6 +78,7 @@ function generateBookList() {
     if (books.length === 0) {
         let errorMessage = document.createElement("p");
         errorMessage.textContent = "Your Library is empty. Please add a book.";
+        bookListDiv.appendChild(errorMessage);
     } else {
         for (let book of books) {
             bookListDiv.appendChild(book.generateCardHTML());

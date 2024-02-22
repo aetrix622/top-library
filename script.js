@@ -6,6 +6,7 @@ const txtNewTitle = document.getElementById("newtitle");
 const txtNewAuthor = document.getElementById("newauthor");
 const txtNewPages = document.getElementById("newpages");
 const rdoNewRead = document.getElementById("newread");
+const rdoNewNotRead = document.getElementById("newnotread");
 const bookListDiv = document.querySelector(".list");
 
 btnAdd.addEventListener("click", e => {
@@ -19,15 +20,23 @@ btnAdd.addEventListener("click", e => {
 
 btnSubmitNewBook.addEventListener("click", e => {
     e.preventDefault();
+    let title = txtNewTitle.value;
+    let author = txtNewAuthor.value;
+    let pages = txtNewPages.value;
+    let read = rdoNewRead.checked;
+    let book = new Book(title, author, pages, read);
+    books.push(book); 
+    generateBookList();
 });
 
 btnCancelNewBook.addEventListener("click", e => {
     e.preventDefault();
     // clear all form fields then hide the form
-    txtNewTitle.textContent = "";
-    txtNewAuthor.textContent = "";
-    txtNewPages.textContent = "";
-    rdoNewRead.checked = true;
+    txtNewTitle.value = "";
+    txtNewAuthor.value = "";
+    txtNewPages.value = "";
+    rdoNewRead.checked = false;
+    rdoNewNotRead.checked = true;
     btnAdd.classList.remove("addmode");
     addBox.classList.remove("addmode");
 });
@@ -61,8 +70,13 @@ books.push(new Book("The Hobbit", "J.R.R. Tolkien", 1024, false));
 books.push(new Book("The Road", "Cormack McCarthy", 837, true));
 
 document.addEventListener("DOMContentLoaded", e => {
+    generateBookList();
+});
+
+function generateBookList() {
+    bookListDiv.innerHTML = "";
     for (let book of books) {
         bookListDiv.appendChild(book.generateCardHTML());
     }
-});
+}
 

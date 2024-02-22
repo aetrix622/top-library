@@ -60,8 +60,8 @@ Book.prototype.generateCardHTML = function(divIndex) {
             <div>Pages</div><div>${this.pages}</div>
             <div class="readstatus">${this.read ? "Read" : "Not Read"}</div>
             <div class="buttons">
-                <button class="toggleread">Toggle Read</button>
-                <button class="delete">Delete</button>
+                <button class="toggleread ${divIndex}">Toggle Read</button>
+                <button class="delete ${divIndex}">Delete</button>
             </div>
     `;
     return cardDiv;
@@ -86,8 +86,31 @@ function generateBookList() {
     } else {
         let index = 0;
         for (let book of books) {
-            let divIndex = `book${index++}`; // number increments AFTER addition
-            bookListDiv.appendChild(book.generateCardHTML(divIndex));
+            // add the card to the page
+            bookListDiv.appendChild(book.generateCardHTML(`book${index}`));
+            index++;
+        }
+        // set up button events
+        let toggleButtons = document.querySelectorAll("button.toggleread");
+        for (let toggleButton of toggleButtons) {
+            toggleButton.addEventListener("click", e => {
+                let buttonClasses = Array.from(e.target.classList);
+                buttonClasses.splice(buttonClasses.indexOf("toggleread"),1);
+                cardIndex = buttonClasses[0].slice(4);
+                books[cardIndex].read = !books[cardIndex].read;
+                generateBookList();
+            });
+        }
+
+        let deleteButtons = document.querySelectorAll("button.delete");
+        for (let deleteButton of deleteButtons) {
+            deleteButton.addEventListener("click", e => {
+                let buttonClasses = Array.from(e.target.classList);
+                buttonClasses.splice(buttonClasses.indexOf("delete"),1);
+                cardIndex = buttonClasses[0].slice(4);
+                books.splice(cardIndex,1);
+                generateBookList();
+            });
         }
     }
 }

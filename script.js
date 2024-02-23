@@ -63,7 +63,13 @@ const Book = function(title, lastName, firstName, pages, read) {
 };
 
 Book.prototype.name = function() {
-    return this.author.firstName + " " + this.author.lastName;
+    // returns the string containing the author's full name, last name first.
+    // returns only the last name if the first name does not exist.
+    if (this.author.firstName) {
+        return this.author.lastName + ", " + this.author.firstName;      
+    } else {
+        return this.author.lastName;
+    }
 };
 
 Book.prototype.generateCardHTML = function(divIndex) {
@@ -72,7 +78,7 @@ Book.prototype.generateCardHTML = function(divIndex) {
     cardDiv.innerHTML = `
             <div class="cover"><img src="${this.coverArt}" alt="${this.coverArtAlt}" class="default"></div>
             <div>Title</div><div>${this.title}</div>
-            <div>Author</div><div>${this.author.lastName}, ${this.author.firstName}</div>
+            <div>Author</div><div>${this.name()}</div>
             <div>Pages</div><div>${this.pages}</div>
             <div class="readstatus">${this.read ? "Read" : "Not Read"}</div>
             <div class="buttons">

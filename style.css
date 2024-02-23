@@ -108,7 +108,7 @@ body {
 
     button {
       height: 30px;
-      width: 150px;
+      width: 200px;
       border-radius: 15px;
       border: 2px solid white;
       background-color: white;
@@ -147,12 +147,27 @@ body {
 
       form {
         display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 20px;
+        grid-template-columns: 150px 1fr;
+        gap: 10px;
+
+        > * {
+          margin: auto 0;
+        }
 
         label {
           font-size: 1.3em;
           text-align: right;
+        }
+        
+        label.smaller {
+          font-size: 1em;
+          padding-right: 10px;
+          border-right: 2px gray solid;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+          height: 2.2em;
         }
 
         .radio {

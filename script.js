@@ -50,32 +50,31 @@ const resetAddDialog = function() {
     addBox.classList.remove("addmode");
 }
 
-const Book = function(title, lastName, firstName, pages, read) {
-    this.title = title;
-    this.author = {
-        firstName: firstName,
-        lastName: lastName,
+class Book {
+    constructor(title, lastName, firstName, pages, read) {
+        this.title = title;
+        this.author = {
+            firstName: firstName,
+            lastName: lastName,
+        };
+        this.pages = pages;
+        this.read = read;
+        this.coverArt = "res/book-open-variant-outline.svg";
+        this.coverArtAlt = "default cover"
     }
-    this.pages = pages;
-    this.read = read;
-    this.coverArt = "res/book-open-variant-outline.svg";
-    this.coverArtAlt = "default cover"
-};
-
-Book.prototype.name = function() {
-    // returns the string containing the author's full name, last name first.
-    // returns only the last name if the first name does not exist.
-    if (this.author.firstName) {
-        return this.author.lastName + ", " + this.author.firstName;      
-    } else {
-        return this.author.lastName;
+    name() {
+        // returns the string containing the author's full name, last name first.
+        // returns only the last name if the first name does not exist.
+        if (this.author.firstName) {
+            return this.author.lastName + ", " + this.author.firstName;
+        } else {
+            return this.author.lastName;
+        }
     }
-};
-
-Book.prototype.generateCardHTML = function(divIndex) {
-    let cardDiv = document.createElement("div");
-    cardDiv.classList.add("card", divIndex);
-    cardDiv.innerHTML = `
+    generateCardHTML(divIndex) {
+        let cardDiv = document.createElement("div");
+        cardDiv.classList.add("card", divIndex);
+        cardDiv.innerHTML = `
             <div class="cover"><img src="${this.coverArt}" alt="${this.coverArtAlt}" class="default"></div>
             <div>Title</div><div>${this.title}</div>
             <div>Author</div><div>${this.name()}</div>
@@ -85,9 +84,10 @@ Book.prototype.generateCardHTML = function(divIndex) {
                 <button class="toggleread ${divIndex}">Toggle Read</button>
                 <button class="delete ${divIndex}">Delete</button>
             </div>
-    `;
-    return cardDiv;
-};
+        `;
+        return cardDiv;
+    }
+}
 
 var books = [];
 // load some default books
